@@ -46,11 +46,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     private Department getDepartment(Long departmentId) {
         String errMsg = String.format("Department is not exists with a given id: %s", departmentId);
-        Department department = departmentRepository.findById(departmentId)
+        return departmentRepository.findById(departmentId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException(errMsg, HttpStatus.NOT_FOUND)
                 );
-        return department;
     }
 
     @Transactional(readOnly = true)
@@ -80,10 +79,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public void deleteDepartment(Long departmentId) {
-        departmentRepository.findById(departmentId)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Department is not exists with a given id: " + departmentId)
-                );
+        Department department = getDepartment(departmentId);
 
         departmentRepository.deleteById(departmentId);
     }
