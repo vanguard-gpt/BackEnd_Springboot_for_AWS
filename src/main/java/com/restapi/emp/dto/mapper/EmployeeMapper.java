@@ -21,16 +21,17 @@ public class EmployeeMapper {
                 employee.getFirstName(),
                 employee.getLastName(),
                 employee.getEmail(),
+                //Department Entity => Department Dto
                 DepartmentMapper.mapToDepartmentDto(employee.getDepartment())
         );
     }
 
     public static Employee mapToEmployee(EmployeeDto employeeDto){
-         Employee employee = new Employee();
-         employee.setId(employeeDto.getId());
-         employee.setFirstName(employeeDto.getFirstName());
-         employee.setLastName(employeeDto.getLastName());
-         employee.setEmail(employeeDto.getEmail());
-         return employee;
+        Employee employee = new Employee();
+        employee.setId(employeeDto.getId());
+        employee.setFirstName(employeeDto.getFirstName());
+        employee.setLastName(employeeDto.getLastName());
+        employee.setEmail(employeeDto.getEmail());
+        return employee;
     }
 }
