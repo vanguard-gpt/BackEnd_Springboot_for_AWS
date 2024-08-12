@@ -39,7 +39,7 @@ public class DepartmentController {
     }
 
     // Build Update Department REST API
-    @PutMapping("{id}")
+    @PatchMapping("{id}")
     public ResponseEntity<DepartmentDto> updateDepartment(@PathVariable("id") Long departmentId,
                                                           @RequestBody DepartmentDto updatedDepartment){
         DepartmentDto departmentDto = departmentService.updateDepartment(departmentId, updatedDepartment);
